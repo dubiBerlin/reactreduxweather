@@ -13,7 +13,7 @@ class SearchBar extends Component {
 
     // Methode onInputchange wird an die Component gebunden
     this.onInputChange = this.onInputChange.bind(this);
-    //  this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   // Methode setzt den State "term" der in den value des input fields gesetzt wird
@@ -25,6 +25,14 @@ class SearchBar extends Component {
   // blocks the browser to send a request to the server when user tries to submi the form
   onFormSubmit(event) {
     event.preventDefault();
+
+    this.props.fetchWeather(this.state.term).then(function(response) {
+      console.log(response.payload);
+    });
+
+    this.setState({
+      term: ""
+    });
   }
 
   render() {
@@ -46,6 +54,8 @@ class SearchBar extends Component {
   }
 }
 
+// Der importierte ActionCreator fetchWeather wird durch die Methode
+// mapDispatchToProps in die props des Containers SearchBar eingefügt.
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
@@ -55,4 +65,8 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
+// exporting SearchBar in connection with the action creator now
+// null steht als Ersatz für den State der noch nicht definiert wurde
+// die ActionCreator Funktion MUSS IMMER als zweites Argument eingefügt werden in die
+// connect Methode.
 export default connect(null, mapDispatchToProps)(SearchBar);

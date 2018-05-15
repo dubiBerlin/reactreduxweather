@@ -10,6 +10,7 @@ export default class SearchBar extends Component {
 
     // Methode onInputchange wird an die Component gebunden
     this.onInputChange = this.onInputChange.bind(this);
+    //  this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   // Methode setzt den State "term" der in den value des input fields gesetzt wird
@@ -18,9 +19,14 @@ export default class SearchBar extends Component {
     this.setState({ term: event.target.value });
   }
 
+  // blocks the browser to send a request to the server when user tries to submi the form
+  onFormSubmit(event) {
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <form className="input-group">
+      <form onSubmit={this.onFormSubmit} className="input-group">
         <input
           placeholder="Get a five day forecast in your favourite cities"
           className="form-control"

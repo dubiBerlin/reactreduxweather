@@ -5,7 +5,14 @@ import {
   SparklinesSpots,
   SparklinesReferenceLine
 } from "react-sparklines";
+import _ from "lodash";
 
+// 2. Hilfsfunktion die innerhalb der komponente genutzt wird
+function average(data) {
+  return _.round(_.sum(data) / data.length);
+}
+
+// 1.erstellt komponente mit props
 export default props => {
   return (
     <div>
@@ -13,6 +20,7 @@ export default props => {
         <SparklinesLine color={props.color} />
         <SparklinesReferenceLine type="avg" />
       </Sparklines>
+      <div>{average(props.data)}</div>
     </div>
   );
 };

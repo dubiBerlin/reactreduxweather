@@ -15,12 +15,13 @@ class WeatherList extends Component {
             <th>Humidity</th>
           </tr>
         </thead>
-        <tbody />
+        <tbody>this.props.weather.map(this.renderWeather)</tbody>
       </table>
     );
   }
 }
 
+//
 function mapStateToProps({ weather }) {
   return { weather }; // { weather } === { weather:weather }
 }

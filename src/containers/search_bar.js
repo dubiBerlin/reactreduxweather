@@ -18,7 +18,6 @@ class SearchBar extends Component {
 
   // Methode setzt den State "term" der in den value des input fields gesetzt wird
   onInputChange(event) {
-    console.log(event.target.value);
     this.setState({ term: event.target.value });
   }
 

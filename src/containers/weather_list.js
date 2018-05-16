@@ -17,13 +17,13 @@ class WeatherList extends Component {
       <tr key={name}>
         <td>{name}</td>
         <td>
-          <Chart data={temps} color="orange" />
+          <Chart data={temps} color="orange" units=" °C" />
         </td>
         <td>
-          <Chart data={pressures} color="red" />
+          <Chart data={pressures} color="red" units=" hPa" />
         </td>
         <td>
-          <Chart data={humidity} color="blue" />
+          <Chart data={humidity} color="blue" units=" %" />
         </td>
       </tr>
     );
@@ -35,9 +35,9 @@ class WeatherList extends Component {
         <thead>
           <tr>
             <th>City</th>
-            <th>Temperature</th>
-            <th>Pressure</th>
-            <th>Humidity</th>
+            <th>Temperature (°C)</th>
+            <th>Pressure (hPa)</th>
+            <th>Humidity (%)</th>
           </tr>
         </thead>
         {/*3. durchläuft die props weather und ruft die Funktion renderWeather

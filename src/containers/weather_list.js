@@ -5,7 +5,7 @@ class WeatherList extends Component {
   // 4. definieren der renderWeather Funktion
   renderWeather(cityData) {
     return (
-      <tr>
+      <tr key={cityData.city.name}>
         <td>{cityData.city.name}</td>
       </tr>
     );
